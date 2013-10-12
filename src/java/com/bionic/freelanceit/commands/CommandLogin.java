@@ -4,7 +4,7 @@
  */
 package com.bionic.freelanceit.commands;
 
-import com.bionic.freelanceit.bean.User;
+import com.bionic.freelanceit.entity.User;
 import com.bionic.freelanceit.dao.UserDAO;
 import com.bionic.freelanceit.factory.DaoFactory;
 import com.bionic.freelanceit.manager.Config;
@@ -13,11 +13,10 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author MAXIM
+ * @author qz
  */
 public class CommandLogin implements ICommand {
 

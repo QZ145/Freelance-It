@@ -1,6 +1,6 @@
 package com.bionic.freelanceit.dao;
 
-import com.bionic.freelanceit.bean.Task;
+import com.bionic.freelanceit.entity.Task;
 import com.bionic.freelanceit.factory.ConnectionFactory;
 import com.bionic.freelanceit.idao.ITaskDAO;
 import java.sql.Connection;

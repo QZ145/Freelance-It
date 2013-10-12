@@ -4,7 +4,7 @@
  */
 package com.bionic.freelanceit.commands;
 
-import com.bionic.freelanceit.bean.User;
+import com.bionic.freelanceit.entity.User;
 import com.bionic.freelanceit.dao.UserDAO;
 import com.bionic.freelanceit.factory.DaoFactory;
 import com.bionic.freelanceit.manager.Config;

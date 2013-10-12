@@ -1,7 +1,7 @@
 
 package com.bionic.freelanceit.idao;
 
-import com.bionic.freelanceit.bean.Task;
+import com.bionic.freelanceit.entity.Task;
 import java.util.ArrayList;
 
 public interface ITaskDAO {

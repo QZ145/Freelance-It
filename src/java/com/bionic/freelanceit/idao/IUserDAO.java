@@ -1,7 +1,7 @@
 
 package com.bionic.freelanceit.idao;
 
-import com.bionic.freelanceit.bean.User;
+import com.bionic.freelanceit.entity.User;
 import java.sql.Date;
 import java.util.ArrayList;
 

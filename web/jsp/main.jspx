@@ -20,6 +20,9 @@
             <c:out value="">Hello, ${name}</c:out>
             <br/>
             <a href="Controller">Return to login</a>
+            <a href="Controller">
+                View profile
+            </a>
             
         </body>
     </html>

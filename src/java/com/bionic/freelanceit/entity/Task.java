@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.bionic.freelanceit.bean;
+package com.bionic.freelanceit.entity;
 
 import java.io.Serializable;
 import javax.persistence.Basic;

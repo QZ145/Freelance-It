@@ -9,7 +9,7 @@
           version="2.0">
 
     <jsp:directive.page contentType="text/html" pageEncoding="UTF-8"/>
-    
+
     <html>
         <head>
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -17,62 +17,34 @@
         </head>
         <body>
             <h1>Profile</h1>
-            <form action="/Controller" method="POST">
-                <table>
-                    <tr>
-                        <td>Name:</td>
-                        <td>
-                            <input type="text" size="30" name="name" value="${name}"/> </td>
-                    </tr>
-                    <tr>
-                        <td>Last name:</td>
-                        <td>
-                            <input type="text" size="30" name="last_name" value="${last_name}"/> </td>
-                    </tr>
-                    <tr>
-                        <td>E-mail:</td>
-                        <td>
-                            <input type="text" size="30" name="email" value="${email}"/> </td>
-                    </tr>
-                    <tr>
-                        <td>Birthday:</td>
-                        <td>
-                            <input type="date" name="date"/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Login:</td>
-                        <td>
-                            ${login}</td>
-                    </tr>
-                    <tr>
-                        <td>ID:</td>
-                        <td>
-                            ${id}</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            Old password:
-                        </td>
-                        <td>
-                        <input type="password" name="old_password"/></td>
-                    </tr>
-                    <tr>
-                        <td>New password:</td>
-                        <td>
-                            <input type="password" name="new_password"/></td>
-                    </tr>
-                    <tr>
-                        <td>Repeat new password:</td>
-                        <td>
-                            <input type="password" name="repeat_password"/></td>
-                    </tr>
-                    <tr><input type="hidden" name="command" value="updateProfile"/></tr>
-                </table>
-                <input type="submit" value="Save"/>
-
-            </form>
-        </body>
-    </html>
+            <table>
+                <tr>
+                    <td>Name:</td>                        
+                    <td>${name}</td>
+                </tr>
+                <tr>
+                    <td>Last name:</td>
+                    <td>${last_name}</td>
+                </tr>
+                <tr>
+                    <td>E-mail:</td>
+                    <td>${email}</td>
+                </tr>
+                <tr>
+                    <td>Birthday:</td>
+                    <td>${date}</td>
+                </tr>
+                <tr>
+                    <td>Login:</td>
+                    <td>${login}</td>
+                </tr>
+                <tr>
+                    <td>ID:</td>
+                    <td>${id}</td>
+                </tr>
+                <tr><input type="hidden" name="command" value="updateProfile"/></tr>
+        </table>
+    </body>
+</html>
 
 </jsp:root>

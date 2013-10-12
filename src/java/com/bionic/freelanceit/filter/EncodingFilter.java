@@ -108,7 +108,7 @@ public class EncodingFilter implements Filter {
         Throwable problem = null;
         try {
             String encoding = request.getCharacterEncoding();
-            System.out.println(encoding);
+//            System.out.println(encoding);
             if(!"UTF-8".equalsIgnoreCase(encoding))
                 response.setCharacterEncoding("UTF-8");
             

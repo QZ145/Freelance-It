@@ -4,6 +4,7 @@ package com.bionic.freelanceit.servlet;
 import com.bionic.freelanceit.commands.CommandLogin;
 import com.bionic.freelanceit.commands.CommandMissing;
 import com.bionic.freelanceit.commands.CommandUpdateProfile;
+import com.bionic.freelanceit.commands.CommandViewProfile;
 import com.bionic.freelanceit.commands.ICommand;
 import java.util.HashMap;
 import javax.servlet.http.HttpServletRequest;
@@ -15,7 +16,8 @@ public class ControllerHelper {
 
     public ControllerHelper() {
         commands.put("login", new CommandLogin());
-//        commands.put("updateProfile", new CommandUpdateProfile());
+        commands.put("updateProfile", new CommandUpdateProfile());
+        commands.put("viewProfile", new CommandViewProfile());
     }
 
     public ICommand getCommand(HttpServletRequest request) {

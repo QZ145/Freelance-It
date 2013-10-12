@@ -1,6 +1,6 @@
 package com.bionic.freelanceit.dao;
 
-import com.bionic.freelanceit.bean.User;
+import com.bionic.freelanceit.entity.User;
 import com.bionic.freelanceit.factory.ConnectionFactory;
 import com.bionic.freelanceit.idao.IUserDAO;
 import java.sql.Connection;
