@@ -18,25 +18,22 @@ import javax.servlet.http.HttpSession;
  *
  * @author qz
  */
-public class CommandViewProfile implements ICommand {
-  
-    
+public class CommandChangeProfile implements ICommand {
+
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         UserDAO userDao = DaoFactory.getUserDao();
         HttpSession session = request.getSession(false);
         String page = null;
         User user = null;
-        
-        if(session == null) {
+
+        if (session == null) {
             page = Config.getInstance().getProperty(Config.LOGIN);
-        }
-        else {
+        } else {
             user = userDao.findById((Integer) session.getAttribute("id"));
             request.setAttribute("user", user);
-            page=Config.getInstance().getProperty(Config.PROFILE);
+            page = Config.getInstance().getProperty(Config.CHANGE_PROFILE);
         }
         return page;
     }
-    
 }

@@ -12,60 +12,59 @@
     
     <html>
         <head>
-            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
             <title>Profile</title>
         </head>
         <body>
             <h1>Profile</h1>
-            <form action="/Controller" method="POST">
+            <form method="POST">
                 <table>
                     <tr>
                         <td>Name:</td>
                         <td>
-                            <input type="text" size="30" name="name" value="${name}"/> </td>
+                            <input type="text" size="30" name="Name" value="${user.name}"/> </td>
                     </tr>
                     <tr>
                         <td>Last name:</td>
                         <td>
-                            <input type="text" size="30" name="last_name" value="${last_name}"/> </td>
+                            <input type="text" size="30" name="LastName" value="${user.lastName}"/> </td>
                     </tr>
                     <tr>
                         <td>E-mail:</td>
                         <td>
-                            <input type="text" size="30" name="email" value="${email}"/> </td>
+                            <input type="text" size="30" name="email" value="${user.email}"/> </td>
                     </tr>
                     <tr>
                         <td>Birthday:</td>
                         <td>
-                            <input type="date" name="date"/>
+                            <input type="date" name="Birthday" value="${user.birthday}"/>
                         </td>
                     </tr>
                     <tr>
                         <td>Login:</td>
                         <td>
-                            ${login}</td>
+                            <c:out value="${user.login}"/></td>
                     </tr>
                     <tr>
                         <td>ID:</td>
                         <td>
-                            ${id}</td>
+                            <c:out value="${user.id}"/></td>
                     </tr>
                     <tr>
                         <td>
                             Old password:
                         </td>
                         <td>
-                        <input type="password" name="old_password"/></td>
+                        <input type="password" name="oldPassword"/></td>
                     </tr>
                     <tr>
                         <td>New password:</td>
                         <td>
-                            <input type="password" name="new_password"/></td>
+                            <input type="password" name="newPassword"/></td>
                     </tr>
                     <tr>
                         <td>Repeat new password:</td>
                         <td>
-                            <input type="password" name="repeat_password"/></td>
+                            <input type="password" name="repeatPassword"/></td>
                     </tr>
                     <tr><input type="hidden" name="command" value="updateProfile"/></tr>
                 </table>

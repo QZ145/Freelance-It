@@ -18,7 +18,7 @@
         <body>
             <h1>Error.</h1>
             <font color="#ff0000" size="+1">
-            <c:out value="">${error}</c:out>
+            <c:out value="${error}"/>
                 </font>
                 <br/>
                 <a href ="Controller">Return to login</a>

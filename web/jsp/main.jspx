@@ -17,13 +17,13 @@
         <body>
             <h1>Hello!</h1>
             <hr/>
-            <c:out value="">Hello, ${name}</c:out>
+            Hello, <c:out value="${name}"/>
             <br/>
-            <a href="Controller">Return to login</a>
-            <a href="Controller">
-                View profile
-            </a>
-            
+            <form method="post">
+                <input type="hidden" name="command" value="viewProfile"/>
+                <input type="submit" value="View profile"/>
+            </form>
+
         </body>
     </html>
 </jsp:root>

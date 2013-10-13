@@ -316,8 +316,8 @@ public class UserDAO implements IUserDAO {
     public void update(User userBean) {
         try {
             connection = getConnection();
-            ptmt = connection.prepareStatement("UPDATE user SET Name=? LastName=? email=? Birthday=? password=?"
-                    + " active=? WHERE id=?");
+            ptmt = connection.prepareStatement("UPDATE user SET Name=?, LastName=?, email=?, Birthday=?, "
+                    + "password=?, active=? WHERE id=?;");
             ptmt.setString(1, userBean.getName());
             ptmt.setString(2, userBean.getLastName());
             ptmt.setString(3, userBean.getEmail());

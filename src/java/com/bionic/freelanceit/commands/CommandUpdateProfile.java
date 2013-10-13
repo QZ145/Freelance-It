@@ -13,6 +13,7 @@ import java.sql.Date;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -22,27 +23,47 @@ public class CommandUpdateProfile implements ICommand {
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-       String page = null;
-       UserDAO userDao = DaoFactory.getUserDao();
-       String name = request.getParameter(userDao.NAME);
-       String lastName = request.getParameter(userDao.LAST_NAME);
-       String email = request.getParameter(userDao.EMAIL);
-       String birthday = request.getParameter(userDao.BIRTHDAY);
-       String password = request.getParameter(userDao.PASSWORD);
-       String active = request.getParameter(userDao.ACTIVE);
-       String login = request.getParameter(userDao.LOGIN);
-       
-       User user = userDao.findByLogin(login);
-       user.setBirthday(Date.valueOf(birthday));
-       user.setEmail(email);
-       user.setLastName(lastName);
-       user.setName(name);
-       user.setPassword(password);
-       user.setActive(Boolean.parseBoolean(active));
-       userDao.update(user);
-       
-       page = Config.getInstance().getProperty(Config.PROFILE);
-       return page;
+        String page = null;
+        User user = null;
+        HttpSession session = request.getSession(false);
+        UserDAO userDao = DaoFactory.getUserDao();
+        String name = request.getParameter(userDao.NAME);
+        String lastName = request.getParameter(userDao.LAST_NAME);
+        String email = request.getParameter(userDao.EMAIL);
+        String birthday = request.getParameter(userDao.BIRTHDAY);
+        String password = request.getParameter(userDao.PASSWORD);
+        String active = request.getParameter(userDao.ACTIVE);
+
+        if (session != null) {
+            user = userDao.findById((Integer) session.getAttribute("id"));
+
+            if (birthday != null) {
+                user.setBirthday(Date.valueOf(birthday));
+            }
+            if (email != null) {
+                user.setEmail(email);
+            }
+            if (lastName != null) {
+                user.setLastName(lastName);
+            }
+            if (name != null) {
+                user.setName(name);
+                System.out.println(name+"---------------------------------------------");
+            }
+            if (password != null) {
+                user.setPassword(password);
+            }
+            if (active != null) {
+                user.setActive(Boolean.parseBoolean(active));
+            }
+            userDao.update(user);
+
+            page = Config.getInstance().getProperty(Config.PROFILE);
+        }
+        else {
+            page = Config.getInstance().getProperty(Config.LOGIN);
+        }
+        request.setAttribute("user", user);
+        return page;
     }
-    
 }

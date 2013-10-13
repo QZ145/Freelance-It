@@ -22,6 +22,7 @@ public class Config {
     public static final String LOGIN = "LOGIN";
     public static final String PROFILE = "PROFILE";
     public static final String DATASOURCE = "DATASOURCE";
+    public static final String CHANGE_PROFILE = "CHANGE_PROFILE";
 
     public static Config getInstance() {
         if (instance == null) {

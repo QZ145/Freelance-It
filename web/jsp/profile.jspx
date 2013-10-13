@@ -9,42 +9,50 @@
           version="2.0">
 
     <jsp:directive.page contentType="text/html" pageEncoding="UTF-8"/>
-
-    <html>
-        <head>
-            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-            <title>Profile</title>
-        </head>
-        <body>
-            <h1>Profile</h1>
-            <table>
-                <tr>
-                    <td>Name:</td>                        
-                    <td>${name}</td>
-                </tr>
-                <tr>
-                    <td>Last name:</td>
-                    <td>${last_name}</td>
-                </tr>
-                <tr>
-                    <td>E-mail:</td>
-                    <td>${email}</td>
-                </tr>
-                <tr>
-                    <td>Birthday:</td>
-                    <td>${date}</td>
-                </tr>
-                <tr>
-                    <td>Login:</td>
-                    <td>${login}</td>
-                </tr>
-                <tr>
-                    <td>ID:</td>
-                    <td>${id}</td>
-                </tr>
-                <tr><input type="hidden" name="command" value="updateProfile"/></tr>
-        </table>
-    </body>
-</html>
-
+    <jsp:body>
+        <html>
+            <head>
+                <title>Profile</title>
+            </head>
+            <body>
+                <table>
+                    <tr>
+                        <td>
+                            <h1>Profile</h1> </td>
+                        <td>
+                            <form method="POST">
+                                <input type="hidden" name="command" value="changeProfile"/>
+                                <input type="submit" value="edit"/>
+                            </form>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Name:</td>                        
+                        <td><c:out value="${user.name}"/></td>
+                    </tr>
+                    <tr>
+                        <td>Last name:</td>
+                        <td><c:out value="${user.lastName}"/></td>
+                    </tr>
+                    <tr>
+                        <td>E-mail:</td>
+                        <td><c:out value="${user.email}"/></td>
+                    </tr>
+                    <tr>
+                        <td>Birthday:</td>
+                        <td><c:out value="${user.birthday}"/></td>
+                    </tr>
+                    <tr>
+                        <td>Login:</td>
+                        <td><c:out value="${user.login}"/></td>
+                    </tr>
+                    <tr>
+                        <td>ID:</td>
+                        <td><c:out value="${user.id}"/></td>
+                    </tr>
+                    <tr><input type="hidden" name="command" value="updateProfile"/></tr>
+            </table>
+        </body>
+    </html>
+</jsp:body>
 </jsp:root>
