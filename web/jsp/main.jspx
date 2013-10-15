@@ -23,7 +23,7 @@
                 <input type="hidden" name="command" value="viewProfile"/>
                 <input type="submit" value="View profile"/>
             </form>
-
+            <a href="jsp/create-task.jspx">Create task</a> 
         </body>
     </html>
 </jsp:root>

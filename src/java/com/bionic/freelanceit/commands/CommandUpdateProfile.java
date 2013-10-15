@@ -31,7 +31,9 @@ public class CommandUpdateProfile implements ICommand {
         String lastName = request.getParameter(userDao.LAST_NAME);
         String email = request.getParameter(userDao.EMAIL);
         String birthday = request.getParameter(userDao.BIRTHDAY);
-        String password = request.getParameter(userDao.PASSWORD);
+        String password = request.getParameter("oldPassword");
+        String newPassword = request.getParameter("newPassword");
+        String rPassword = request.getParameter("repeatPassword");
         String active = request.getParameter(userDao.ACTIVE);
 
         if (session != null) {
@@ -48,10 +50,9 @@ public class CommandUpdateProfile implements ICommand {
             }
             if (name != null) {
                 user.setName(name);
-                System.out.println(name+"---------------------------------------------");
             }
-            if (password != null) {
-                user.setPassword(password);
+            if (password != null && password.equals(user.getPassword()) && newPassword != null && newPassword.equals(rPassword)) {
+                user.setPassword(newPassword);
             }
             if (active != null) {
                 user.setActive(Boolean.parseBoolean(active));
