@@ -29,13 +29,13 @@ public class CommandLogin implements ICommand {
         String page = null;
         String login = request.getParameter(LOGIN);
         String password = request.getParameter(PASSWORD);
-        UserDAO userDao = DaoFactory.getUserDao();
+        UserDAO userDao = DaoFactory.getUserDAO();
 
         if (userDao.find(login, password)) {
             User user = userDao.findByLogin(login);
             request.setAttribute("name", user.getName());
             request.setAttribute("login", login);
-            request.getSession(true).setAttribute("id", user.getId());
+            request.getSession(true).setAttribute("user", user);
             page = Config.getInstance().getProperty(Config.MAIN);
         } else {
             request.setAttribute("error", Message.getInstance().getProperty(Message.LOGIN_ERROR));

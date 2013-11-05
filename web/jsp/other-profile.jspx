@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- 
-    Document   : profile
-    Created on : Oct 10, 2013, 1:33:46 PM
+    Document   : other-profile
+    Created on : Oct 31, 2013, 6:42:20 PM
     Author     : qz
 -->
 <jsp:root xmlns:jsp="http://java.sun.com/JSP/Page"
@@ -9,25 +9,17 @@
           version="2.0">
 
     <jsp:directive.page contentType="text/html" pageEncoding="UTF-8"/>
-    <jsp:body>
-        <html>
-            <head>
-                <title>Profile</title>
-            </head>
-            <body>
-                <table>
-                    <tr>
-                        <td>
-                            <h1>Profile</h1> </td>
-                        <td>
-                            <form method="POST">
-                                <input type="hidden" name="command" value="updateProfile"/>
-                                <input type="hidden" name="mode" value="view"/>
-                                <input type="submit" value="edit"/>
-                            </form>
-                        </td>
-                    </tr>
-                    <tr>
+    <html>
+        <head>
+            <title>
+                <c:out value="${user.login}"/>
+            </title>
+        </head>
+        <body>
+            <h3><c:out value="${name.login}"/></h3>
+            <hr/>
+            <table>
+                <tr>
                         <td>Name:</td>                        
                         <td><c:out value="${user.name}"/></td>
                     </tr>
@@ -51,8 +43,7 @@
                         <td>ID:</td>
                         <td><c:out value="${user.id}"/></td>
                     </tr>
-                </table>
-            </body>
-        </html>
-    </jsp:body>
+            </table>
+        </body>
+    </html>
 </jsp:root>

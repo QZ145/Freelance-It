@@ -11,22 +11,26 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
 
 public class UserDAO implements IUserDAO {
 
     private Connection connection = null;
     private PreparedStatement ptmt = null;
     private ResultSet resultSet = null;
-    private final String QUERY_SELECT = "SELECT * FROM user";
+    private final String QUERY_SELECT = "SELECT * FROM User";
     public final String ID = "id";
-    public final String NAME = "Name";
-    public final String LAST_NAME = "LastName";
-    public final String LOGIN = "Login";
+    public final String NAME = "name";
+    public final String LAST_NAME = "lastName";
+    public final String LOGIN = "login";
     public final String EMAIL = "email";
-    public final String BIRTHDAY = "Birthday";
-    public final String DATE_OF_REGISTRATION = "DateOfRegistration";
+    public final String BIRTHDAY = "birthday";
+    public final String DATE_OF_REGISTRATION = "dateOfRegistration";
     public final String PASSWORD = "password";
-    public final String ACTIVE = "active";
+    public final String STATUS = "status";
 
     public UserDAO() {
     }
@@ -38,48 +42,31 @@ public class UserDAO implements IUserDAO {
     }
 
     @Override
-    public void add(User userBean) {
-        try {
-            connection = getConnection();
-            ptmt = connection.prepareStatement("INSERT INTO user(Name, Login, email, DateOfRegistration, password) "
-                    + "VALUES(?,?,?,?,?);");
-            ptmt.setString(1, userBean.getName());
-            ptmt.setString(2, userBean.getLogin());
-            ptmt.setString(3, userBean.getEmail());
-            ptmt.setDate(4, (Date) userBean.getDateOfRegistration());
-            ptmt.setString(5, userBean.getPassword());
-            ptmt.executeUpdate();
-        } catch (SQLException ex) {
-            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            try {
-                if (ptmt != null) {
-                    ptmt.close();
-                }
-                if (connection != null) {
-                    connection.close();
-                }
-                if (resultSet != null) {
-                    resultSet.close();
-                }
-            } catch (SQLException ex) {
-                Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
+    public User add(User userBean) {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("FreelanceItPU");
+        EntityManager em = emf.createEntityManager();
+        EntityTransaction tx = em.getTransaction();
+        tx.begin();
+        em.persist(userBean);
+        em.flush();
+        tx.commit();
+        em.close();
+        emf.close();
+        return userBean;
     }
 
     @Override
     public ArrayList<User> findAll() {
         ArrayList userList = new ArrayList();
-        
+
         try {
             connection = getConnection();
             ptmt = connection.prepareStatement(QUERY_SELECT + ";");
             resultSet = ptmt.executeQuery();
             while (resultSet.next()) {
                 User user = new User();
-                user.setId(resultSet.getInt(ID));
-                user.setActive(resultSet.getBoolean(ACTIVE));
+                user.setId(resultSet.getLong(ID));
+                user.setStatus(resultSet.getBoolean(STATUS));
                 user.setEmail(resultSet.getString(EMAIL));
                 user.setLastName(resultSet.getString(LAST_NAME));
                 user.setLogin(resultSet.getString(LOGIN));
@@ -119,8 +106,9 @@ public class UserDAO implements IUserDAO {
             ptmt.setInt(1, id);
             resultSet = ptmt.executeQuery();
             resultSet.next();
-            user = new User(id);
-            user.setActive(resultSet.getBoolean(ACTIVE));
+            user = new User();
+            user.setId(resultSet.getLong(ID));
+            user.setStatus(resultSet.getBoolean(STATUS));
             user.setEmail(resultSet.getString(EMAIL));
             user.setLastName(resultSet.getString(LAST_NAME));
             user.setLogin(resultSet.getString(LOGIN));
@@ -159,8 +147,8 @@ public class UserDAO implements IUserDAO {
             resultSet = ptmt.executeQuery();
             while (resultSet.next()) {
                 User user = new User();
-                user.setId(resultSet.getInt(ID));
-                user.setActive(resultSet.getBoolean(ACTIVE));
+                user.setId(resultSet.getLong(ID));
+                user.setStatus(resultSet.getBoolean(STATUS));
                 user.setEmail(resultSet.getString(EMAIL));
                 user.setLastName(resultSet.getString(LAST_NAME));
                 user.setLogin(resultSet.getString(LOGIN));
@@ -201,8 +189,8 @@ public class UserDAO implements IUserDAO {
             resultSet = ptmt.executeQuery();
             resultSet.next();
             user = new User();
-            user.setId(resultSet.getInt(ID));
-            user.setActive(resultSet.getBoolean(ACTIVE));
+            user.setId(resultSet.getLong(ID));
+            user.setStatus(resultSet.getBoolean(STATUS));
             user.setEmail(resultSet.getString(EMAIL));
             user.setLastName(resultSet.getString(LAST_NAME));
             user.setLogin(resultSet.getString(LOGIN));
@@ -240,8 +228,8 @@ public class UserDAO implements IUserDAO {
             resultSet = ptmt.executeQuery();
             resultSet.next();
             user = new User();
-            user.setId(resultSet.getInt(ID));
-            user.setActive(resultSet.getBoolean(ACTIVE));
+            user.setId(resultSet.getLong(ID));
+            user.setStatus(resultSet.getBoolean(STATUS));
             user.setEmail(resultSet.getString(EMAIL));
             user.setLastName(resultSet.getString(LAST_NAME));
             user.setLogin(resultSet.getString(LOGIN));
@@ -280,8 +268,8 @@ public class UserDAO implements IUserDAO {
             resultSet = ptmt.executeQuery();
             while (resultSet.next()) {
                 User user = new User();
-                user.setId(resultSet.getInt(ID));
-                user.setActive(resultSet.getBoolean(ACTIVE));
+                user.setId(resultSet.getLong(ID));
+                user.setStatus(resultSet.getBoolean(STATUS));
                 user.setEmail(resultSet.getString(EMAIL));
                 user.setLastName(resultSet.getString(LAST_NAME));
                 user.setLogin(resultSet.getString(LOGIN));
@@ -314,35 +302,15 @@ public class UserDAO implements IUserDAO {
 
     @Override
     public void update(User userBean) {
-        try {
-            connection = getConnection();
-            ptmt = connection.prepareStatement("UPDATE user SET Name=?, LastName=?, email=?, Birthday=?, "
-                    + "password=?, active=? WHERE id=?;");
-            ptmt.setString(1, userBean.getName());
-            ptmt.setString(2, userBean.getLastName());
-            ptmt.setString(3, userBean.getEmail());
-            ptmt.setDate(4, (Date) userBean.getBirthday());
-            ptmt.setString(5, userBean.getPassword());
-            ptmt.setBoolean(6, userBean.getActive());
-            ptmt.setInt(7, userBean.getId());
-            ptmt.executeUpdate();
-        } catch (SQLException ex) {
-            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            try {
-                if (ptmt != null) {
-                    ptmt.close();
-                }
-                if (connection != null) {
-                    connection.close();
-                }
-                if (resultSet != null) {
-                    resultSet.close();
-                }
-            } catch (SQLException ex) {
-                Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("FreelanceItPU");
+        EntityManager em = emf.createEntityManager();
+        EntityTransaction tx = em.getTransaction();
+        tx.begin();
+        em.merge(userBean);
+        em.flush();
+        tx.commit();
+        em.close();
+        emf.close();
     }
 
     @Override
@@ -355,8 +323,8 @@ public class UserDAO implements IUserDAO {
             resultSet = ptmt.executeQuery();
             while (resultSet.next()) {
                 User user = new User();
-                user.setId(resultSet.getInt(ID));
-                user.setActive(resultSet.getBoolean(ACTIVE));
+                user.setId(resultSet.getLong(ID));
+                user.setStatus(resultSet.getBoolean(STATUS));
                 user.setEmail(resultSet.getString(EMAIL));
                 user.setLastName(resultSet.getString(LAST_NAME));
                 user.setLogin(resultSet.getString(LOGIN));
@@ -391,7 +359,7 @@ public class UserDAO implements IUserDAO {
     public Boolean find(String login, String password) {
         try {
             connection = getConnection();
-            ptmt = connection.prepareStatement(QUERY_SELECT + " WHERE Login=? AND password=?;");
+            ptmt = connection.prepareStatement(QUERY_SELECT + " WHERE login=? AND password=?;");
             ptmt.setString(1, login);
             ptmt.setString(2, password);
             resultSet = ptmt.executeQuery();

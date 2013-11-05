@@ -21,12 +21,12 @@
                     <tr>
                         <td>Name:</td>
                         <td>
-                            <input type="text" size="30" name="Name" value="${user.name}"/> </td>
+                            <input type="text" size="30" name="name" value="${user.name}"/> </td>
                     </tr>
                     <tr>
                         <td>Last name:</td>
                         <td>
-                            <input type="text" size="30" name="LastName" value="${user.lastName}"/> </td>
+                            <input type="text" size="30" name="lastName" value="${user.lastName}"/> </td>
                     </tr>
                     <tr>
                         <td>E-mail:</td>
@@ -36,7 +36,7 @@
                     <tr>
                         <td>Birthday:</td>
                         <td>
-                            <input type="date" name="Birthday" value="${user.birthday}"/>
+                            <input type="date" name="birthday" value="${user.birthday}"/>
                         </td>
                     </tr>
                     <tr>
@@ -66,8 +66,9 @@
                         <td>
                             <input type="password" name="repeatPassword"/></td>
                     </tr>
-                    <tr><input type="hidden" name="command" value="updateProfile"/></tr>
                 </table>
+                    <input type="hidden" name="command" value="updateProfile"/>
+                    <input type="hidden" name="mode" value="update"/>
                 <input type="submit" value="Save"/>
 
             </form>

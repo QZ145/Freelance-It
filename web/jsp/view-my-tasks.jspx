@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+    Document   : view-my-tasks
+    Created on : Oct 24, 2013, 9:04:01 PM
+    Author     : qz
+-->
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page"
+          xmlns:c="http://java.sun.com/jsp/jstl/core"
+          version="2.0">
+
+    <jsp:directive.page contentType="text/html" pageEncoding="UTF-8"/>
+    <html>
+        <head>
+            <title>My tasks</title>
+        </head>
+        <body>
+            <h1>Your tasks</h1>
+            <c:forEach var="task" items="${tasks}">
+                <hr/>
+                <h3><c:out value="${task.title}"/></h3> <br/>
+                <c:out value="${task.description}"/>       
+            </c:forEach>
+        </body>
+    </html>
+</jsp:root>

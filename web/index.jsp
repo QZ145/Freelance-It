@@ -12,7 +12,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>Welcome to Freelance It!</h1>
         <a href="Controller">Log in</a>
     </body>
 </html>

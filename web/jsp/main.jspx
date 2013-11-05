@@ -17,13 +17,9 @@
         <body>
             <h1>Hello!</h1>
             <hr/>
-            Hello, <c:out value="${name}"/>
+            Hello, <c:out value="${user.name}"/>
             <br/>
-            <form method="post">
-                <input type="hidden" name="command" value="viewProfile"/>
-                <input type="submit" value="View profile"/>
-            </form>
-            <a href="jsp/create-task.jspx">Create task</a> 
+            <jsp:include page="menu.jspx"/>
         </body>
     </html>
 </jsp:root>

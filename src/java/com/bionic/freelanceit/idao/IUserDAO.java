@@ -6,7 +6,7 @@ import java.sql.Date;
 import java.util.ArrayList;
 
 public interface IUserDAO {
-    public void add(User user);
+    public User add(User user);
     public ArrayList<User> findAll();
     public User findById(int id);
     public ArrayList<User> findByName(String Name);

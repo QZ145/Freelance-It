@@ -23,6 +23,8 @@ public class Config {
     public static final String PROFILE = "PROFILE";
     public static final String DATASOURCE = "DATASOURCE";
     public static final String CHANGE_PROFILE = "CHANGE_PROFILE";
+    public static final String CREATE_TASK = "CREATE_TASK";
+    public static final String VIEW_MY_TASKS = "VIEW_MY_TASKS";
 
     public static Config getInstance() {
         if (instance == null) {

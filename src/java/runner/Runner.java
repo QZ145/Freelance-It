@@ -13,7 +13,7 @@ import com.bionic.freelanceit.factory.DaoFactory;
  */
 public class Runner {
     public static void main(String[] args) {
-        UserDAO userDao = DaoFactory.getUserDao();
+        UserDAO userDao = DaoFactory.getUserDAO();
 //        System.out.println(userDao.find("root", "root"));
         System.out.print(userDao.findByLogin("root").getName());
     }

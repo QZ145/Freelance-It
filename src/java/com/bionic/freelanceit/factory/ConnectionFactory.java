@@ -17,7 +17,7 @@ import java.util.logging.Logger;
 public class ConnectionFactory {
     String driverClassName = "org.gjt.mm.mysql.Driver";
 //    String driverClassName = "com.mysql.jdbc.Driver";
-    String connection = "jdbc:mysql://localhost:3306/projectX";
+    String connection = "jdbc:mysql://localhost:3306/FreelanceIt";
     String dbUser = "root";
     String dbPwd = "root";
 

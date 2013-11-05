@@ -16,8 +16,9 @@
                 <title>Create task</title>
             </head>
             <body>
-                <form action="Controller" method="POST">
+                <form method="POST">
                     <input type="hidden" name="command" value="createTask"/>
+                    <input type="hidden" name="mode" value="update"/>
                     <table>
                         <tr>
                             <td>Title:</td>

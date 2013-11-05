@@ -12,10 +12,9 @@ public class ControllerHelper {
 
     public ControllerHelper() {
         commands.put("login", new CommandLogin());
-        commands.put("updateProfile", new CommandUpdateProfile());
-        commands.put("viewProfile", new CommandViewProfile());
-        commands.put("changeProfile", new CommandChangeProfile());
+        commands.put("updateProfile", new CommandChangeProfile());
         commands.put("createTask", new CommandCreateTask());
+        commands.put("viewMyProfile", new CommandViewMyProfile());
     }
 
     public ICommand getCommand(HttpServletRequest request) {
