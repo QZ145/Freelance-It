@@ -23,7 +23,6 @@ public class UserTaskDAO implements IUserTaskDAO {
         EntityManager em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();
         tx.begin();
-        em.flush();
         em.persist(userTask);
         tx.commit();
         em.close();

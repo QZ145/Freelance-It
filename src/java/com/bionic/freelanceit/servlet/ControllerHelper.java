@@ -15,6 +15,7 @@ public class ControllerHelper {
         commands.put("updateProfile", new CommandChangeProfile());
         commands.put("createTask", new CommandCreateTask());
         commands.put("viewMyProfile", new CommandViewMyProfile());
+        commands.put("viewMyTasks", new CommandViewMyTasks());
     }
 
     public ICommand getCommand(HttpServletRequest request) {

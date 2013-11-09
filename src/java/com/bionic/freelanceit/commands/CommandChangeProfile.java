@@ -6,6 +6,7 @@ package com.bionic.freelanceit.commands;
 
 import com.bionic.freelanceit.entity.User;
 import com.bionic.freelanceit.dao.UserDAO;
+import com.bionic.freelanceit.entitybeans.user.UserFacade;
 import com.bionic.freelanceit.factory.DaoFactory;
 import com.bionic.freelanceit.manager.Config;
 import java.io.IOException;
@@ -35,6 +36,7 @@ public class CommandChangeProfile implements ICommand {
         String newPassword = request.getParameter("newPassword");
         String rPassword = request.getParameter("repeatPassword");
         String active = request.getParameter(userDao.STATUS);
+        UserFacade userFacade = new UserFacade();
 
         if (session != null) {
             if (request.getParameter("mode").equals("view")) {
@@ -60,8 +62,7 @@ public class CommandChangeProfile implements ICommand {
                 if (active != null) {
                     user.setStatus(Boolean.parseBoolean(active));
                 }
-                userDao.update(user);
-
+                userFacade.edit(user);
                 page = Config.getInstance().getProperty(Config.PROFILE);
             }
         } else {

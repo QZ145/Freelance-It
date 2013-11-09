@@ -17,7 +17,7 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
 public class TaskDAO implements ITaskDAO {
-    
+
     private Connection connection = null;
     private PreparedStatement ptmt = null;
     private ResultSet resultSet = null;
@@ -27,57 +27,30 @@ public class TaskDAO implements ITaskDAO {
     private final String TITLE = "title";
     private final String STATUS = "status";
     private final String DONE = "done";
-    
+
     public TaskDAO() {
-        
     }
-    
+
     private Connection getConnection() throws SQLException {
         Connection conn;
         conn = ConnectionFactory.getInstance().getConnection();
         return conn;
     }
-    
+
     @Override
     public Task add(Task taskBean) {
-//        try {
-//            connection = getConnection();
-//            ptmt = connection.prepareStatement("INSERT INTO Task(description, title, id_owner) VALUES(?,?,?);");
-//            ptmt.setString(1, taskBean.getDescription());
-//            ptmt.setString(2, taskBean.getTitle());
-//            ptmt.setInt(3, taskBean.getIdOwner());
-//            ptmt.executeUpdate();
-//            
-//        } catch (SQLException ex) {
-//            Logger.getLogger(TaskDAO.class.getName()).log(Level.SEVERE, null, ex);
-//        } finally {
-//            try {
-//                if (ptmt != null) {
-//                    ptmt.close();
-//                }
-//                if (connection != null) {
-//                    connection.close();
-//                }
-//                if (resultSet != null) {
-//                    resultSet.close();
-//                }
-//            } catch (SQLException ex) {
-//                Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
-//            }
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("FreelanceItPU");
         EntityManager em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();
         tx.begin();
         em.persist(taskBean);
-        em.flush();
         tx.commit();
         em.close();
         emf.close();
-        return taskBean;       
-//        }
-        
+        return taskBean;
+
     }
-    
+
 //    @Override
 //    public Task findById(int id) {
 //        Task task = null;
@@ -338,7 +311,6 @@ public class TaskDAO implements ITaskDAO {
 //            }
 //        }
 //    }
-
     @Override
     public Task findById(int id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

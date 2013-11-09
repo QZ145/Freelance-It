@@ -9,12 +9,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 
 public class UserDAO implements IUserDAO {
 
@@ -56,84 +58,20 @@ public class UserDAO implements IUserDAO {
     }
 
     @Override
-    public ArrayList<User> findAll() {
-        ArrayList userList = new ArrayList();
-
-        try {
-            connection = getConnection();
-            ptmt = connection.prepareStatement(QUERY_SELECT + ";");
-            resultSet = ptmt.executeQuery();
-            while (resultSet.next()) {
-                User user = new User();
-                user.setId(resultSet.getLong(ID));
-                user.setStatus(resultSet.getBoolean(STATUS));
-                user.setEmail(resultSet.getString(EMAIL));
-                user.setLastName(resultSet.getString(LAST_NAME));
-                user.setLogin(resultSet.getString(LOGIN));
-                user.setName(resultSet.getString(NAME));
-                user.setPassword(resultSet.getString(PASSWORD));
-                user.setBirthday(resultSet.getDate(BIRTHDAY));
-                user.setDateOfRegistration(resultSet.getDate(DATE_OF_REGISTRATION));
-                userList.add(user);
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            try {
-                if (ptmt != null) {
-                    ptmt.close();
-                }
-                if (connection != null) {
-                    connection.close();
-                }
-                if (resultSet != null) {
-                    resultSet.close();
-                }
-            } catch (SQLException ex) {
-                Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-
+    public List<User> findAll() {
+        List userList = null;
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("FreelanceItPU");
+        EntityManager em = emf.createEntityManager();
+        userList = em.createNamedQuery("findAll").getResultList();
         return userList;
     }
 
     @Override
-    public User findById(int id) {
+    public User findById(Long id) {
         User user = null;
-        try {
-            connection = getConnection();
-            ptmt = connection.prepareStatement(QUERY_SELECT + " WHERE id =?;");
-            ptmt.setInt(1, id);
-            resultSet = ptmt.executeQuery();
-            resultSet.next();
-            user = new User();
-            user.setId(resultSet.getLong(ID));
-            user.setStatus(resultSet.getBoolean(STATUS));
-            user.setEmail(resultSet.getString(EMAIL));
-            user.setLastName(resultSet.getString(LAST_NAME));
-            user.setLogin(resultSet.getString(LOGIN));
-            user.setName(resultSet.getString(NAME));
-            user.setPassword(resultSet.getString(PASSWORD));
-            user.setBirthday(resultSet.getDate(BIRTHDAY));
-            user.setDateOfRegistration(resultSet.getDate(DATE_OF_REGISTRATION));
-
-        } catch (SQLException ex) {
-            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            try {
-                if (ptmt != null) {
-                    ptmt.close();
-                }
-                if (connection != null) {
-                    connection.close();
-                }
-                if (resultSet != null) {
-                    resultSet.close();
-                }
-            } catch (SQLException ex) {
-                Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("FreelanceItPU");
+        EntityManager em = emf.createEntityManager();
+        user = em.find(User.class, id);
         return user;
     }
 

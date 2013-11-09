@@ -15,10 +15,11 @@
         </head>
         <body>
             <h1>Your tasks</h1>
-            <c:forEach var="task" items="${tasks}">
+            <c:forEach var="task" items="${taskCollection}">
                 <hr/>
-                <h3><c:out value="${task.title}"/></h3> <br/>
-                <c:out value="${task.description}"/>       
+                <h3><c:out value="${task.title}"/></h3>
+                <c:out value="${task.description}"/>  <br/>
+                <span style="text-align: right;"><c:out value="${task.dateOfCreation}"/></span>   
             </c:forEach>
         </body>
     </html>

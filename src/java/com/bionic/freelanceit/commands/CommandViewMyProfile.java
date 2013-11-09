@@ -4,9 +4,6 @@
  */
 package com.bionic.freelanceit.commands;
 
-import com.bionic.freelanceit.dao.UserDAO;
-import com.bionic.freelanceit.entity.User;
-import com.bionic.freelanceit.factory.DaoFactory;
 import com.bionic.freelanceit.manager.Config;
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -23,10 +20,8 @@ public class CommandViewMyProfile implements ICommand {
     
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        UserDAO userDao = DaoFactory.getUserDAO();
         HttpSession session = request.getSession(false);
         String page = null;
-        User user = null;
         
         if(session != null) {
             page = Config.getInstance().getProperty(Config.PROFILE);
