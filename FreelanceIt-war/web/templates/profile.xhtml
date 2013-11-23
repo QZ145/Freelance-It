@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <div>
+        <table>
+            <tr>
+                <td>
+                    <p:outputLabel value="Name:"/>
+                </td>
+                <td>
+                    <p:outputLabel value="#{userController.user.userInfo.name}"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p:outputLabel value="Last name:"/>
+                </td>
+                <td>
+                    <p:outputLabel value="#{userController.user.userInfo.lastName}"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p:outputLabel value="E-mail:"/>
+                </td>
+                <td>
+                    <p:outputLabel value="#{userController.user.userInfo.email}"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p:outputLabel value="Login:"/>
+                </td>
+                <td>
+                    <p:outputLabel value="#{userController.user.userInfo.login}"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p:outputLabel value="Birthday:"/>
+                </td>
+                <td>
+                    <p:outputLabel value="#{userController.user.userInfo.birthday}">
+                        <f:convertDateTime pattern="dd.MM.yyyy"/>
+                    </p:outputLabel>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+</ui:composition>

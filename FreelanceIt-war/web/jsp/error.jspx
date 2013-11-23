@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+    Document   : error
+    Created on : Oct 10, 2013, 1:20:22 PM
+    Author     : qz
+-->
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" 
+          xmlns:c="http://java.sun.com/jsp/jstl/core"
+          version="2.0">
+
+    <jsp:directive.page contentType="text/html" pageEncoding="UTF-8"/>
+
+    <html>
+        <head>
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+            <title>Error</title>
+        </head>
+        <body>
+            <h1>Error.</h1>
+            <font color="#ff0000" size="+1">
+            <c:out value="${error}"/>
+            </font>
+            <br/>
+            <a href ="Controller">Return to login</a>
+
+        </body>
+    </html>
+
+</jsp:root>

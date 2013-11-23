@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <body>
+        <div>
+            <h:form>
+                <p:menubar>
+                    <p:menuitem value="Main" url="main.xhtml"/>
+                    <p:submenu label="My profile">
+                        <p:menuitem value="View profile" action="#{userController.doViewProfile()}"/>
+                    </p:submenu>
+                </p:menubar>
+            </h:form>
+        </div>
+    </body>
+</html>

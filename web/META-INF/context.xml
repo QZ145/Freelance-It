@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<Context antiJARLocking="true" path="/FrelanceIt">
-    <Resource auth = "Container" driverClassName = "com.mysql.jdbc.Driver" maxActive = "100"
-    maxIdle = "10" maxWait = "10000" name = "source" password = "root" type = "javax.sql.DataSource"
-    url = "jdbc:mysql://localhost:3306/projectX" username = "root"/>
-</Context>
