@@ -4,7 +4,6 @@
  */
 package com.bionic.freelanceit.mb;
 
-import com.bionic.freelanceit.entities.GroupEntity;
 import com.bionic.freelanceit.entities.Task;
 import com.bionic.freelanceit.entities.User;
 import com.bionic.freelanceit.entities.UserTask;
@@ -13,18 +12,14 @@ import com.bionic.freelanceit.manager.Config;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.annotation.Resource;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.jms.JMSConnectionFactory;
 import javax.jms.JMSContext;
-import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.ObjectMessage;
 import javax.jms.Queue;
