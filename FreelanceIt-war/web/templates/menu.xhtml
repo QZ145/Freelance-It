@@ -13,7 +13,11 @@ and open the template in the editor.
                 <p:menubar>
                     <p:menuitem value="Main" url="main.xhtml"/>
                     <p:submenu label="My profile">
-                        <p:menuitem value="View profile" action="#{userController.doViewProfile()}"/>
+                        <p:menuitem value="View profile" action="#{currentUserController.viewMyProfile()}"/>
+                        <p:menuitem value="Change profile" action="#{currentUserController.viewChangeProfile()}"/>
+                    </p:submenu>
+                    <p:submenu label="My tasks">
+                        <p:menuitem value="Create task" action="#{currentUserController.viewCreateTask()}"/>
                     </p:submenu>
                 </p:menubar>
             </h:form>

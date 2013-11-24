@@ -8,6 +8,8 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -30,7 +32,6 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "UserTask.findByRelationType", query = "SELECT u FROM UserTask u WHERE u.relationType = :relationType"),
     @NamedQuery(name = "UserTask.findByIdUserTask", query = "SELECT u FROM UserTask u WHERE u.idUserTask = :idUserTask")})
 public class UserTask implements Serializable {
-
     private static final long serialVersionUID = 1L;
     @Basic(optional = false)
     @NotNull
@@ -38,16 +39,16 @@ public class UserTask implements Serializable {
     @Column(name = "relationType")
     private String relationType;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @NotNull
     @Column(name = "idUser_Task")
     private Long idUserTask;
-    @JoinColumn(name = "idTask", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private Task task;
     @JoinColumn(name = "idUser", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private User user;
+    @JoinColumn(name = "idTask", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private Task task;
 
     public UserTask() {
     }
@@ -77,20 +78,20 @@ public class UserTask implements Serializable {
         this.idUserTask = idUserTask;
     }
 
-    public Task getTask() {
-        return task;
-    }
-
-    public void setTask(Task task) {
-        this.task = task;
-    }
-
     public User getUser() {
         return user;
     }
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Task getTask() {
+        return task;
+    }
+
+    public void setTask(Task task) {
+        this.task = task;
     }
 
     @Override
@@ -117,4 +118,5 @@ public class UserTask implements Serializable {
     public String toString() {
         return "com.bionic.freelanceit.entities.UserTask[ idUserTask=" + idUserTask + " ]";
     }
+    
 }

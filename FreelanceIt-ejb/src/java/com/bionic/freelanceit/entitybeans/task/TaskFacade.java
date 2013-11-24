@@ -9,6 +9,7 @@ import com.bionic.freelanceit.entities.User;
 import com.bionic.freelanceit.entities.UserTask;
 import com.bionic.freelanceit.entitybeans.AbstractFacade;
 import java.util.Collection;
+import java.util.Date;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -44,4 +45,5 @@ public class TaskFacade extends AbstractFacade<Task> implements TaskFacadeLocal 
         }
         return user;
     }
+    
 }

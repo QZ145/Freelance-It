@@ -48,45 +48,23 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "User.findByEmail", query = "SELECT u FROM User u WHERE u.userInfo.email = :email"),
     @NamedQuery(name = "User.findByStatus", query = "SELECT u FROM User u WHERE u.status = :status")})
 public class User implements Serializable {
-
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
     private Long id;
-//    @Basic(optional = false)
-//    @NotNull
-//    @Size(min = 1, max = 45)
-//    @Column(name = "name")
-//    private String name;
-//    @Size(max = 45)
-//    @Column(name = "lastName")
-//    private String lastName;
-//    @Basic(optional = false)
-//    @NotNull
-//    @Size(min = 1, max = 20)
-//    @Column(name = "login")
-//    private String login;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
     @Column(name = "password")
     private String password;
-//    @Column(name = "birthday")
-//    @Temporal(TemporalType.DATE)
-//    private Date birthday;
     @Basic(optional = false)
     @NotNull
     @Column(name = "dateOfRegistration")
     @Temporal(TemporalType.DATE)
     private Date dateOfRegistration;
     // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
-//    @Basic(optional = false)
-//    @NotNull
-//    @Size(min = 1, max = 45)
-//    @Column(name = "email")
-//    private String email;
     @Basic(optional = false)
     @NotNull
     @Column(name = "status")
@@ -108,15 +86,6 @@ public class User implements Serializable {
         this.id = id;
     }
 
-//    public User(Long id, String name, String login, String password, Date dateOfRegistration, String email, boolean status) {
-//        this.id = id;
-//        this.name = name;
-//        this.login = login;
-//        this.password = password;
-//        this.dateOfRegistration = dateOfRegistration;
-//        this.email = email;
-//        this.status = status;
-//    }
     public User(Long id, String password, Date dateOfRegistration, boolean status, UserInfo userInfo) {
         this.id = id;
         this.password = password;
@@ -157,13 +126,21 @@ public class User implements Serializable {
         this.status = status;
     }
 
+    public UserInfo getUserInfo() {
+        return userInfo;
+    }
+
+    public void setUserInfo(UserInfo userInfo) {
+        this.userInfo = userInfo;
+    }
+
     @XmlTransient
     public Collection<GroupEntity> getGroupEntityCollection() {
         return groupEntityCollection;
     }
 
-    public void setGroupEntityCollection(Collection<GroupEntity> groupEntityCollection) {
-        this.groupEntityCollection = groupEntityCollection;
+    public void setGroupEntityCollection(Collection<GroupEntity> group1Collection) {
+        this.groupEntityCollection = group1Collection;
     }
 
     @XmlTransient
@@ -173,14 +150,6 @@ public class User implements Serializable {
 
     public void setUserTaskCollection(Collection<UserTask> userTaskCollection) {
         this.userTaskCollection = userTaskCollection;
-    }
-
-    public UserInfo getUserInfo() {
-        return userInfo;
-    }
-
-    public void setUserInfo(UserInfo userInfo) {
-        this.userInfo = userInfo;
     }
 
     @Override
@@ -207,4 +176,5 @@ public class User implements Serializable {
     public String toString() {
         return "com.bionic.freelanceit.entities.User[ id=" + id + " ]";
     }
+    
 }

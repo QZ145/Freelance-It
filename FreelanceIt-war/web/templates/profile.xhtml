@@ -18,7 +18,7 @@ and open the template in the editor.
                     <p:outputLabel value="Name:"/>
                 </td>
                 <td>
-                    <p:outputLabel value="#{userController.user.userInfo.name}"/>
+                    <p:outputLabel value="#{currentUserController.user.userInfo.name}"/>
                 </td>
             </tr>
             <tr>
@@ -26,7 +26,7 @@ and open the template in the editor.
                     <p:outputLabel value="Last name:"/>
                 </td>
                 <td>
-                    <p:outputLabel value="#{userController.user.userInfo.lastName}"/>
+                    <p:outputLabel value="#{currentUserController.user.userInfo.lastName}"/>
                 </td>
             </tr>
             <tr>
@@ -34,7 +34,7 @@ and open the template in the editor.
                     <p:outputLabel value="E-mail:"/>
                 </td>
                 <td>
-                    <p:outputLabel value="#{userController.user.userInfo.email}"/>
+                    <p:outputLabel value="#{currentUserController.user.userInfo.email}"/>
                 </td>
             </tr>
             <tr>
@@ -42,7 +42,7 @@ and open the template in the editor.
                     <p:outputLabel value="Login:"/>
                 </td>
                 <td>
-                    <p:outputLabel value="#{userController.user.userInfo.login}"/>
+                    <p:outputLabel value="#{currentUserController.user.userInfo.login}"/>
                 </td>
             </tr>
             <tr>
@@ -50,7 +50,7 @@ and open the template in the editor.
                     <p:outputLabel value="Birthday:"/>
                 </td>
                 <td>
-                    <p:outputLabel value="#{userController.user.userInfo.birthday}">
+                    <p:outputLabel value="#{currentUserController.user.userInfo.birthday}">
                         <f:convertDateTime pattern="dd.MM.yyyy"/>
                     </p:outputLabel>
                 </td>

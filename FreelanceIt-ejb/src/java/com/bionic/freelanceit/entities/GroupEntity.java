@@ -32,7 +32,6 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "GroupEntity.findByGroupName", query = "SELECT g FROM GroupEntity g WHERE g.groupName = :groupName"),
     @NamedQuery(name = "GroupEntity.findByGroupDesc", query = "SELECT g FROM GroupEntity g WHERE g.groupDesc = :groupDesc")})
 public class GroupEntity implements Serializable {
-
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -117,6 +116,7 @@ public class GroupEntity implements Serializable {
 
     @Override
     public String toString() {
-        return "com.bionic.freelanceit.entities.GroupEntity[ idGroup=" + idGroup + " ]";
+        return "com.bionic.freelanceit.entities.Group1[ idGroup=" + idGroup + " ]";
     }
+    
 }

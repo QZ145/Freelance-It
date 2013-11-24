@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <div>
+        <h:form>
+            <table>
+                <tr>
+                    <td>
+                <p:outputLabel value="Name:"/>
+                </td>
+                <td>
+                <p:inputText value="#{currentUserController.user.userInfo.name}" />
+                </td>
+                </tr>
+                <tr>
+                    <td>
+                <p:outputLabel value="Last name:"/>
+                </td>
+                <td>
+                <p:inputText value="#{currentUserController.user.userInfo.lastName}"/>
+                </td>
+                </tr>
+                <tr>
+                    <td>
+                <p:outputLabel value="E-mail:"/>
+                </td>
+                <td>
+                <p:inputText value="#{currentUserController.user.userInfo.email}" />
+                </td>
+                </tr>
+                <tr>
+                    <td>
+                <p:outputLabel value="Birthday:"/>
+                </td>
+                <td>
+                <p:calendar value="#{currentUserController.user.userInfo.birthday}" pattern="dd.MM.yyyy"/>
+                </td>
+                </tr>
+            </table>
+            <p:commandButton action="#{currentUserController.updateProfile()}" value="Update" />
+        </h:form>
+    </div>
+</ui:composition>

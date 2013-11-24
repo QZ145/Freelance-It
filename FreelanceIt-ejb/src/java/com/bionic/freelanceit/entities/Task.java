@@ -41,7 +41,6 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Task.findByDone", query = "SELECT t FROM Task t WHERE t.done = :done"),
     @NamedQuery(name = "Task.findByDateOfCreation", query = "SELECT t FROM Task t WHERE t.dateOfCreation = :dateOfCreation")})
 public class Task implements Serializable {
-
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -55,7 +54,7 @@ public class Task implements Serializable {
     private String title;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 45)
+    @Size(min = 1, max = 2000)
     @Column(name = "description")
     private String description;
     @Basic(optional = false)
@@ -171,4 +170,5 @@ public class Task implements Serializable {
     public String toString() {
         return "com.bionic.freelanceit.entities.Task[ id=" + id + " ]";
     }
+    
 }
