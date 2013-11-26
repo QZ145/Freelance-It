@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <div>
+        <h:form>
+            <p:dataTable var="task" value="#{currentUserController.taskCollection}"
+                         paginator="true" rows="10">
+                <p:column headerText="Title">
+                    <p:outputLabel value="#{task.title}"/>
+                </p:column>
+                <p:column headerText="Description">
+                    <p:outputLabel value="#{task.description}"/>
+                </p:column>
+                <p:column headerText="Created" style="width: content-box;">
+                    <p:outputLabel value="#{task.dateOfCreation}">
+                        <f:convertDateTime pattern="dd.MM.yyyy"/>
+                    </p:outputLabel>
+                </p:column>
+            </p:dataTable>
+        </h:form>
+    </div>
+</ui:composition>

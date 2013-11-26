@@ -12,6 +12,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -74,7 +75,7 @@ public class User implements Serializable {
         @JoinColumn(name = "idGroup", referencedColumnName = "idGroup")})
     @ManyToMany
     private Collection<GroupEntity> groupEntityCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", fetch = FetchType.LAZY)
     private Collection<UserTask> userTaskCollection;
     @Embedded
     UserInfo userInfo;

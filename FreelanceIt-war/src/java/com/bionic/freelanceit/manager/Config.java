@@ -25,6 +25,8 @@ public class Config {
     public static final String CHANGE_PROFILE = "CHANGE_PROFILE";
     public static final String CREATE_TASK = "CREATE_TASK";
     public static final String TASKS_CREATED_BY_USER = "TASKS_CREATED_BY_USER";
+    public static final String TASKS_CREATED_BY_ME = "TASKS_CREATED_BY_ME";
+    public static final String INDEX = "INDEX";
 
     public static Config getInstance() {
         if (instance == null) {

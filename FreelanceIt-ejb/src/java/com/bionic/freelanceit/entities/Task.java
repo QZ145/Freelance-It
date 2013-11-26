@@ -11,6 +11,7 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -70,7 +71,7 @@ public class Task implements Serializable {
     @Column(name = "dateOfCreation")
     @Temporal(TemporalType.DATE)
     private Date dateOfCreation;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "task")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "task", fetch = FetchType.LAZY)
     private Collection<UserTask> userTaskCollection;
 
     public Task() {

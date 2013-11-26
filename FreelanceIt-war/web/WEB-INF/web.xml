@@ -54,24 +54,6 @@
         <description/>
         <role-name>user</role-name>
     </security-role>
-    <ejb-local-ref>
-        <ejb-ref-name>UserFacade</ejb-ref-name>
-        <ejb-ref-type>Session</ejb-ref-type>
-        <local>com.bionic.freelanceit.entitybeans.user.UserFacadeLocal</local>
-        <ejb-link>FreelanceIt-ejb.jar#UserFacade</ejb-link>
-    </ejb-local-ref>
-    <ejb-local-ref>
-        <ejb-ref-name>TaskFacade</ejb-ref-name>
-        <ejb-ref-type>Session</ejb-ref-type>
-        <local>com.bionic.freelanceit.entitybeans.task.TaskFacadeLocal</local>
-        <ejb-link>FreelanceIt-ejb.jar#TaskFacade</ejb-link>
-    </ejb-local-ref>
-    <ejb-local-ref>
-        <ejb-ref-name>UserTaskFacade</ejb-ref-name>
-        <ejb-ref-type>Session</ejb-ref-type>
-        <local>com.bionic.freelanceit.entitybeans.usertask.UserTaskFacadeLocal</local>
-        <ejb-link>FreelanceIt-ejb.jar#UserTaskFacade</ejb-link>
-    </ejb-local-ref>
     <context-param>
         <param-name>primefaces.THEME</param-name>
         <param-value>delta</param-value>

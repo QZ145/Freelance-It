@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-To change this template, choose Tools | Templates
-and open the template in the editor.
--->
+
 <!DOCTYPE html>
 <ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 xmlns:p="http://primefaces.org/ui"
@@ -16,7 +13,7 @@ and open the template in the editor.
                 <p:outputLabel value="Title"/>
                 </td>
                 <td>
-                <p:inputText value="#{currentUserController.task.title}"/>
+                <p:inputText value="#{createTasksController.task.title}"/>
                 </td>
                 </tr>
                 <tr>
@@ -24,11 +21,11 @@ and open the template in the editor.
                 <p:outputLabel value="Description"/>
                 </td>
                 <td>
-                <p:inputTextarea value="#{currentUserController.task.description}"/>
+                <p:inputTextarea value="#{createTasksController.task.description}"/>
                 </td>
                 </tr>
             </table>
-            <p:commandButton action="#{currentUserController.createTask()}" value="Create"/>
+            <p:commandButton action="#{createTasksController.createTask()}" value="Create"/>
         </h:form>
     </div>
 </ui:composition>
